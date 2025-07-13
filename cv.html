@@ -1,0 +1,1941 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Emir Can - Eğitim Sitesi</title>
+  <style>
+    /* Temel Reset */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: #121212;
+      color:#e0e0e0;
+      line-height: 1.6;
+      min-height: 100vh;
+      font-size: 16px;
+      scroll-behavior: smooth;
+    }
+
+    a {
+      color:#bb86fc;
+      text-decoration: none;
+    }
+
+    a:hover {
+        color: #d1c4e9; /* Lighter purple for hover */
+      text-decoration: underline;
+    }
+
+    /* Header & Navbar */
+      header {
+      background-color: rgba(30, 30, 30, 0.95); /* Dark header with slight transparency */
+      color: #ffffff;
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(8px); /* Adds blur effect to elements behind */
+    }
+
+      .logo {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: #bb86fc; /* Purple accent */
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.4rem;
+      flex-wrap: wrap;
+      margin-right: 1rem;
+    }
+
+      nav ul li {
+      cursor: pointer;
+      padding: 0.3rem 0.7rem;
+      border-radius: 5px;
+      transition: all 0.3s ease;
+      white-space: nowrap;
+    }
+
+    nav ul li:hover,
+    nav ul li.active {
+      background-color: #3700b3; /* Darker purple */
+      color: #ffffff;
+    }
+
+    /* Dil seçici ve foto */
+    .top-right {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .language-switcher {
+      background: #1e1e1e;
+      color: #ffffff;
+      font-weight: 600;
+      border-radius: 8px;
+      padding: 0.2rem 0.6rem;
+      cursor: pointer;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      user-select: none;
+      display: flex;
+      gap: 0.4rem;
+      align-items: center;
+      font-size: 0.85rem;
+      border: 1px solid #333;
+    }
+
+
+    .language-switcher span {
+      cursor: pointer;
+      padding: 0.2rem 0.6rem;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+
+      .language-switcher span.active {
+      background-color: #3700b3; /* Dark purple */
+      color: white;
+    }
+    .profile-photo {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 3px 8px rgba(187, 134, 252, 0.3);
+      border: 2px solid #bb86fc; /* Purple accent */
+    }
+
+    /* Ana içerik */
+    main {
+      padding: 2rem 0;
+    }
+
+    /* Bölümler */
+    .section {
+      max-width: 900px;
+      margin: 2rem auto 3rem;
+      background: #1e1e1e; /* Dark section background */
+      padding: 2rem 2.5rem;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+      border: 1px solid #333;
+    }
+
+      .section h2 {
+      color: #bb86fc; /* Purple accent */
+      border-bottom: 3px solid #bb86fc;
+      padding-bottom: 0.4rem;
+      margin-bottom: 1.5rem;
+    }
+
+
+     /* Hakkımda */
+    #about .photo img {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 5px 15px rgba(187, 134, 252, 0.3);
+      border: 3px solid #bb86fc;
+    }
+
+    #about .photo {
+      flex: 0 0 180px;
+    }
+
+    #about .photo img {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 5px 15px rgba(15, 82, 186, 0.5);
+    }
+
+    #about .content {
+      flex: 1;
+      min-width: 250px;
+    }
+
+    #about p {
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
+      color: #e0e0e0;
+    }
+
+    /* Kurslar */
+    .course-list {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .course-btn {
+      background: #2d2d2d;
+      padding: 0.8rem 1.3rem;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: 700;
+      color: #bb86fc;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s ease;
+      user-select: none;
+      border: 1px solid #333;
+    }
+
+       .course-btn:hover,
+    .course-btn.active {
+      background: #3700b3;
+      color: white;
+      transform: translateY(-4px);
+      box-shadow: 0 8px 16px rgba(59, 0, 179, 0.3);
+    }
+
+    /* Ders içerikleri */
+    .lesson-list {
+      margin-top: 1rem;
+      padding-left: 1rem;
+    }
+
+    .lesson-item {
+      margin-bottom: 0.6rem;
+    }
+
+  .lesson-item a {
+      font-weight: 600;
+      font-size: 1rem;
+      color: #bb86fc;
+    }
+
+       .lesson-item a:hover {
+      color: #d1c4e9;
+      text-decoration: underline;
+    }
+
+    .lesson-desc {
+      color: #b0b0b0;
+      font-size: 0.9rem;
+      margin-left: 1.2rem;
+      margin-bottom: 1rem;
+    }
+
+   /* Projeler */
+    #projects p {
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+      color: #e0e0e0;
+    }
+
+    #projects a {
+      display: inline-block;
+      background-color: #3700b3;
+      color: white;
+      padding: 0.7rem 1.6rem;
+      border-radius: 8px;
+      font-weight: 700;
+      transition: all 0.3s ease;
+      border: none;
+    }
+    #projects a:hover {
+      background-color: #6200ee;
+      transform: translateY(-2px);
+    }
+
+    /* İletişim */
+    #contact p,
+    #contact label {
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+      color: #e0e0e0;
+    }
+
+    #contact form {
+      max-width: 480px;
+      background: #2d2d2d;
+      padding: 1.5rem 2rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      border: 1px solid #333;
+    }
+
+    #contact input,
+    #contact textarea {
+      width: 100%;
+      padding: 0.7rem 1rem;
+      margin-bottom: 1.2rem;
+      border: 1.5px solid #3700b3;
+      border-radius: 8px;
+      font-size: 1rem;
+      resize: vertical;
+      background: #1e1e1e;
+      color: #e0e0e0;
+    }
+
+    #contact input:focus,
+    #contact textarea:focus {
+      outline: none;
+      border-color: #bb86fc;
+      box-shadow: 0 0 0 2px rgba(187, 134, 252, 0.3);
+    }
+
+    #contact button {
+      background-color: #3700b3;
+      color: white;
+      padding: 0.8rem 1.8rem;
+      border: none;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      width: 100%;
+    }
+
+    #contact button:hover {
+      background-color: #6200ee;
+      transform: translateY(-2px);
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      background: #1e1e1e;
+      color: white;
+      border-top: 1px solid #333;
+    }
+
+    /* Gizle/göster için */
+    .hidden {
+      display: none;
+    }
+
+    /* Kod örnekleri */
+    .code-example {
+      background: #2d2d2d;
+      border-radius: 8px;
+      padding: 1rem;
+      margin: 1rem 0;
+      overflow-x: auto;
+      border-left: 4px solid #bb86fc;
+      color: #e0e0e0;
+      font-family: 'Courier New', Courier, monospace;
+      border: 1px solid #333;
+    }
+
+    .code-example pre {
+      margin: 0;
+      white-space: pre-wrap;
+    }
+    .code-example code {
+      font-family: 'Courier New', Courier, monospace;
+      color: #e0e0e0;
+      line-height: 1.4;
+    }
+
+    .toggle-code {
+      cursor: pointer;
+      position: relative;
+      padding-left: 1.2rem;
+    }
+
+    .toggle-code::before {
+      content: "+";
+      position: absolute;
+      left: 0;
+      font-weight: bold;
+    }
+
+    .toggle-code.active::before {
+      content: "-";
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem;
+      }
+
+      nav ul {
+        margin: 0.5rem 0;
+      }
+
+      .section {
+        padding: 1.5rem;
+      }
+
+      #about .photo {
+        margin: 0 auto;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="logo tr-text">Emir Can</div>
+    <div class="logo en-text hidden">Emir Can</div>
+
+    <nav>
+      <ul>
+        <li class="active" data-target="about" data-tr="Hakkımda" data-en="About">Hakkımda</li>
+        <li data-target="courses" data-tr="Kurslar" data-en="Courses">Kurslar</li>
+        <li data-target="projects" data-tr="Projeler" data-en="Projects">Projeler</li>
+        <li data-target="contact" data-tr="İletişim" data-en="Contact">İletişim</li>
+      </ul>
+    </nav>
+
+    <div class="top-right">
+      <div class="language-switcher">
+        <span class="active" data-lang="tr">TR</span>
+        <span data-lang="en">EN</span>
+      </div>
+      <img src="thomass.jpg" alt="Iron Man" class="profile-photo">
+
+    </div>
+  </header>
+
+  <main>
+    <!-- Hakkımda Bölümü -->
+    <section id="about" class="section">
+      <div class="photo">
+        <img src="thomass.jpg" alt="Emir Can">
+      </div>
+      <div class="content">
+        <h2 class="tr-text">Hakkımda</h2>
+        <h2 class="en-text hidden">About Me</h2>
+
+        <div class="tr-text">
+          <p>Merhaba, ben Emir Can. Yazılım mühendisliği öğrencisiyim ve programlama eğitmenliği yapıyorum.</p>
+          <p>R, C, Java ve Python programlama dillerinde uzmanım. Bu dillerde hem temel hem de ileri seviye eğitimler
+            veriyorum.</p>
+          <p>Amacım, öğrencilere sadece kod yazmayı değil, aynı zamanda problem çözme becerilerini de kazandırmak.</p>
+        </div>
+
+        <div class="en-text hidden">
+          <p>Hello, I'm Emir Can. I'm a software engineering student and programming instructor.</p>
+          <p>I specialize in R, C, Java and Python programming languages. I teach both basic and advanced level courses
+            in these languages.</p>
+          <p>My goal is to provide students not only with coding skills but also with problem-solving abilities.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Kurslar Bölümü -->
+    <section id="courses" class="section">
+      <h2 class="tr-text">Kurslar</h2>
+      <h2 class="en-text hidden">Courses</h2>
+
+      <div class="course-list">
+        <div class="course-btn tr-text" data-course="python">Python</div>
+        <div class="course-btn tr-text" data-course="java">Java</div>
+        <div class="course-btn tr-text" data-course="c">C Programlama</div>
+        <div class="course-btn tr-text" data-course="r">R Programlama</div>
+
+        <div class="course-btn en-text hidden" data-course="python">Python</div>
+        <div class="course-btn en-text hidden" data-course="java">Java</div>
+        <div class="course-btn en-text hidden" data-course="c">C Programming</div>
+        <div class="course-btn en-text hidden" data-course="r">R Programming</div>
+      </div>
+
+      <div class="tr-text">
+        <!-- Python Dersleri -->
+        <div id="python-lessons" class="lesson-list">
+          <h3>Python Kursu İçeriği</h3>
+          
+          <div class="lesson-item">
+            <a href="#" class="toggle-code">Temel Python</a>
+            <div class="lesson-desc">Değişkenler, döngüler, fonksiyonlar ve temel veri yapıları</div>
+            <div class="code-example hidden">
+              <pre><code># 1. Değişkenler
+isim = "Emir"
+yas = 21
+pi = 3.14
+dogru_mu = True
+
+print(f"İsim: {isim}, Yaş: {yas}, Pi: {pi}, Doğru mu?: {dogru_mu}")
+
+# 2. Döngüler
+print("\nFor döngüsü ile sayılar:")
+for i in range(1, 6):
+    print(i, end=" ")
+print()
+
+print("\nWhile döngüsü ile sayılar:")
+sayac = 1
+while sayac <= 5:
+    print(sayac, end=" ")
+    sayac += 1
+print()
+
+# 3. Fonksiyonlar
+def selamla(isim):
+    print(f"Merhaba, {isim}!")
+
+selamla(isim)
+
+def topla(a, b):
+    return a + b
+
+sonuc = topla(10, 5)
+print(f"Toplama sonucu: {sonuc}")
+
+# 4. Temel Veri Yapıları
+
+# Liste
+meyveler = ["elma", "armut", "muz"]
+print(f"Meyveler listesi: {meyveler}")
+meyveler.append("kiraz")
+print(f"Güncellenmiş meyveler listesi: {meyveler}")
+
+# Tuple (değiştirilemez)
+renkler = ("kırmızı", "mavi", "yeşil")
+print(f"Renkler tuple'ı: {renkler}")
+
+# Sözlük (dictionary)
+kisi = {
+    "isim": "Emir",
+    "yas": 21,
+    "meslek": "Öğrenci"
+}
+print(f"Kişi bilgileri: {kisi}")
+print(f"İsim: {kisi['isim']}, Meslek: {kisi['meslek']}")
+
+# Döngü ile liste elemanlarını yazdırma
+print("\nMeyveler listesi elemanları:")
+for meyve in meyveler:
+    print("-", meyve)</code></pre>
+            </div>
+          </div>
+
+          <div class="lesson-item">
+            <a href="#" class="toggle-code">Nesne Yönelimli Programlama</a>
+            <div class="lesson-desc">Sınıflar, nesneler, kalıtım ve polimorfizm</div>
+            <div class="code-example hidden">
+              <pre><code># Temel Python: Değişkenler, Döngüler, Fonksiyonlar (Recursive dahil), Veri Yapıları ve Açıklamalar
+
+# 1. Değişkenler
+ad = "Emir"                # String türünde isim değişkeni
+yas = 21                   # Integer türünde yaş değişkeni
+pi = 3.14159               # Ondalıklı sayı (float)
+dogru_mu = True            # Boolean (doğru/yanlış)
+
+print(f"Merhaba, benim adım {ad}, yaşım {yas}.")
+
+# 2. Döngüler
+
+# For döngüsü: 1'den 5'e kadar sayıları yazdırır
+print("\nFor döngüsü ile 1'den 5'e kadar sayılar:")
+for i in range(1, 6):
+    print(i, end=" ")
+print()
+
+# While döngüsü: 5'ten 1'e kadar sayıları yazdırır
+print("\nWhile döngüsü ile 5'ten 1'e kadar sayılar:")
+sayac = 5
+while sayac > 0:
+    print(sayac, end=" ")
+    sayac -= 1  # sayacı her seferinde 1 azaltır
+print()
+
+# 3. Fonksiyonlar
+
+# Toplama işlemi yapan fonksiyon
+def topla(a, b):
+    """İki sayının toplamını döndürür."""
+    return a + b
+
+# Recursive (özyinelemeli) fonksiyon: Faktöriyel hesaplar
+def faktoriyel(n):
+    """n! faktöriyeli hesaplar."""
+    if n == 0 or n == 1:    # Temel durum: 0! ve 1! = 1
+        return 1
+    else:
+        return n * faktoriyel(n - 1)  # Kendini çağırarak hesaplar
+
+# Recursive fonksiyon: Fibonacci dizisi hesaplar
+def fibonacci(n):
+    """Fibonacci dizisinin n'inci elemanını döndürür."""
+    if n == 0:
+        return 0
+    elif n == 1:
+        return 1
+    else:
+        # Önceki iki sayının toplamı
+        return fibonacci(n - 1) + fibonacci(n - 2)
+
+print(f"3 + 5 = {topla(3,5)}")
+print("5! =", faktoriyel(5))
+print("Fibonacci dizisindeki 7. sayı =", fibonacci(7))
+
+# 4. Veri Yapıları
+
+# 4.1 Liste (List)
+sayilar = [1, 2, 3, 4, 5]  # Birden fazla değeri sıralı olarak tutar, değiştirilebilir
+print(f"\nListe: {sayilar}")
+
+sayilar.append(6)           # Listenin sonuna eleman ekler
+print("6 eklendi:", sayilar)
+
+sayilar.remove(3)           # Listeden 3 sayısını siler
+print("3 silindi:", sayilar)
+
+print("Listenin uzunluğu:", len(sayilar))  # Listenin eleman sayısı
+
+# 4.2 Tuple
+renkler = ("kırmızı", "yeşil", "mavi")  # Değiştirilemeyen (immutable) liste gibi
+print("Tuple:", renkler)
+
+# Tuple'ın elemanına erişim (değiştirilemez!)
+print("İkinci renk:", renkler[1])
+
+# 4.3 Sözlük (Dictionary)
+kisi = {"isim": "Emir", "yas": 21, "meslek": "Öğrenci"}  # Anahtar-değer çiftleri
+print("Sözlük:", kisi)
+
+# Sözlükte anahtara göre değer alma
+print(f"İsim: {kisi['isim']} - Meslek: {kisi['meslek']}")
+
+# Yeni anahtar-değer ekleme
+kisi["şehir"] = "Diyarbakır"
+print("Şehir eklendi:", kisi)
+
+# 4.4 Küme (Set)
+kume1 = {1, 2, 3, 4}  # Tekrarsız elemanlar, sırasız
+kume2 = {3, 4, 5, 6}
+
+print("\nKümeler:")
+print("Küme1:", kume1)
+print("Küme2:", kume2)
+
+# Kesişim: İki kümenin ortak elemanları
+print("Küme1 ∩ Küme2 (kesişim):", kume1.intersection(kume2))
+
+# Birleşim: İki kümenin tüm elemanları
+print("Küme1 ∪ Küme2 (birleşim):", kume1.union(kume2))
+
+# Fark: Küme1'de olup Küme2'de olmayanlar
+print("Küme1 - Küme2 (fark):", kume1.difference(kume2))
+
+# 5. Döngüler ve Veri Yapıları ile Çalışmak
+
+print("\nListe elemanlarını yazdırma:")
+for sayi in sayilar:
+    print(sayi, end=" ")
+print()
+
+print("\nSözlük elemanlarını yazdırma:")
+for key, value in kisi.items():
+    print(f"{key}: {value}")
+
+# 6. Lambda Fonksiyonu ve Map
+
+# Lambda: Anonim fonksiyon (tek satırlık fonksiyon)
+kare_al = lambda x: x * x
+
+# Map: Her bir liste elemanına fonksiyon uygular
+sayilar_kare = list(map(kare_al, sayilar))
+print("\nSayiların kareleri:", sayilar_kare)
+
+# 7. List Comprehension (Liste Üreteçleri)
+
+# 1'den 10'a kadar çift sayılar listesi oluşturma
+cift_sayilar = [x for x in range(1, 11) if x % 2 == 0]
+print("\n1-10 arası çift sayılar:", cift_sayilar)
+
+# 8. Hata Yakalama (Exception Handling)
+
+try:
+    bolum = 10 / 0  # Hata oluşturacak kod
+except ZeroDivisionError:
+    print("\nHata: Sıfıra bölme yapılamaz!")
+
+# 9. Dosya İşlemleri
+
+# Dosyaya yazma
+with open("ornek.txt", "w") as dosya:
+    dosya.write("Merhaba, dosya yazma işlemi gerçekleşti.\n")
+
+# Dosyadan okuma
+with open("ornek.txt", "r") as dosya:
+    icerik = dosya.read()
+print("\nDosya içeriği:")
+print(icerik)</code></pre>
+            </div>
+          </div>
+
+          <div class="lesson-item">
+            <a href="#" class="toggle-code">Veri Bilimi için Python</a>
+            <div class="lesson-desc">NumPy, Pandas ve Matplotlib kütüphaneleri</div>
+            <div class="code-example hidden">
+              <pre><code># NumPy: Sayısal hesaplama, diziler
+import numpy as np; arr = np.array([1,2,3]); print(arr)
+
+# Pandas: Veri analizi, DataFrame
+import pandas as pd; df = pd.DataFrame({'A':[1,2], 'B':[3,4]}); print(df)
+
+# Matplotlib: Grafik çizimi
+import matplotlib.pyplot as plt; plt.plot([1,2,3],[4,5,6]); plt.show()
+
+# Seaborn: İleri seviye istatistiksel grafikler
+import seaborn as sns; sns.set(); sns.scatterplot(x=[1,2,3], y=[4,5,6]); plt.show()
+
+# Scikit-learn: Makine öğrenmesi
+from sklearn.linear_model import LinearRegression; model = LinearRegression(); print(model)
+
+# TensorFlow: Derin öğrenme, yapay zeka
+import tensorflow as tf; print(tf.__version__)
+
+# Keras: TensorFlow üstünde hızlı derin öğrenme API'si
+from tensorflow import keras; print("Keras hazır")
+
+# OpenCV: Görüntü işleme
+import cv2; print(cv2.__version__)
+
+# MediaPipe: Gerçek zamanlı el, yüz, vücut izleme
+import mediapipe as mp; print(mp.solutions.hands)
+
+# Pygame: 2D oyun yapımı
+import pygame; pygame.init(); print("Pygame hazır")
+
+# Flask: Web uygulama framework
+from flask import Flask; app = Flask(__name__); print("Flask app")
+
+# Django: Büyük ölçekli web uygulama framework
+import django; print(django.get_version())
+
+# Requests: HTTP istekleri
+import requests; r = requests.get('https://api.github.com'); print(r.status_code)
+
+# BeautifulSoup: HTML veri çekme ve parse etme
+from bs4 import BeautifulSoup; print("BeautifulSoup")
+
+# PyTorch: Derin öğrenme, alternatif TensorFlow
+import torch; print(torch.__version__)
+
+# SQLAlchemy: Python ile SQL veritabanı bağlantısı
+from sqlalchemy import create_engine; print("SQLAlchemy hazır")
+
+# Pillow (PIL): Görüntü işleme ve açma
+from PIL import Image; print("Pillow")
+
+# Scrapy: Web kazıma frameworkü
+import scrapy; print("Scrapy")
+
+# Plotly: İnteraktif grafikler ve dashboardlar
+import plotly.express as px; print("Plotly")
+
+# Dash: Plotly ile web tabanlı interaktif dashboard yapımı
+import dash; print("Dash")
+
+# OpenAI: OpenAI API bağlantısı için
+import openai; print("OpenAI API hazır")
+
+# PyGame: Oyun geliştirme için
+import pygame; pygame.init(); print("Pygame başlatıldı")
+
+# NetworkX: Grafik ve ağ analizi
+import networkx as nx; G = nx.Graph(); G.add_edge(1,2); print(G.edges())
+
+# SymPy: Sembolik matematik ve cebir işlemleri
+import sympy as sp; x = sp.symbols('x'); expr = sp.sin(x) + sp.cos(x); print(expr)</code></pre>
+            </div>
+          </div>
+        </div>
+
+        <!-- Java Dersleri -->
+        <div id="java-lessons" class="lesson-list hidden">
+          <h3>Java Kursu İçeriği</h3>
+          
+          <div class="lesson-item">
+            <a href="#" class="toggle-code">Java Temelleri</a>
+            <div class="lesson-desc">Sözdizimi, veri tipleri ve kontrol yapıları</div>
+            <div class="code-example hidden">
+              <pre><code>public class JavaTemelleri {
+    public static void main(String[] args) {
+        
+        // 1. Değişken tanımlama ve veri tipleri
+        int sayi = 10;               // Tam sayı (integer) tipinde değişken
+        double ondalik = 5.75;       // Ondalıklı sayı (double) tipi
+        char harf = 'A';             // Tek karakter (char) tipi
+        boolean dogruMu = true;      // Doğru/yanlış (boolean) tipi
+        String metin = "Merhaba";    // Metin (String) tipi
+
+        // 2. Ekrana yazdırma
+        System.out.println("Sayı: " + sayi);          // Değişkeni yazdır
+        System.out.println("Metin: " + metin);
+
+        // 3. Koşul ifadesi (if-else)
+        if (sayi > 5) {
+            System.out.println("Sayı 5'ten büyüktür."); // Koşul doğruysa burası çalışır
+        } else {
+            System.out.println("Sayı 5'ten küçük veya eşittir.");
+        }
+
+        // 4. switch-case kontrol yapısı
+        switch(harf) {
+            case 'A':
+                System.out.println("Harf A'dır.");
+                break;  // Case bitti, çık
+            case 'B':
+                System.out.println("Harf B'dir.");
+                break;
+            default:
+                System.out.println("Harf ne A ne B.");
+        }
+
+        // 5. Döngüler
+        // for döngüsü: 0'dan 4'e kadar sayıları yazdır
+        for (int i = 0; i < 5; i++) {
+            System.out.println("for döngüsü sayısı: " + i);
+        }
+
+        // while döngüsü: sayi 0 olana kadar azalt ve yazdır
+        int temp = sayi;
+        while (temp > 0) {
+            System.out.println("while döngüsü sayısı: " + temp);
+            temp--;  // temp = temp - 1;
+        }
+
+        // 6. Diziler (Array)
+        int[] sayilar = {1, 2, 3, 4, 5};               // Integer dizisi
+        System.out.println("Dizinin ilk elemanı: " + sayilar[0]); // Dizinin ilk elemanı 1'dir
+
+        // 7. Fonksiyon (metod) çağırma
+        int toplam = topla(5, 7);    // topla metodunu çağır ve sonucu al
+        System.out.println("Toplam: " + toplam);
+    }
+
+    // 8. Fonksiyon tanımlama - iki sayıyı toplayan metod
+    public static int topla(int a, int b) {
+        return a + b;  // a ile b'nin toplamını döndürür
+    }
+}</code></pre>
+            </div>
+          </div>
+
+          <div class="lesson-item"><a href="#">Nesne Yönelimli Java</a></div>
+          <div class="lesson-desc">Sınıflar, arayüzler ve paketler</div>
+
+          <div class="lesson-item"><a href="#">Java Koleksiyonları</a></div>
+          <div class="lesson-desc">Listeler, setler, haritalar ve stream API</div>
+        </div>
+
+        <!-- C Dersleri -->
+        <div id="c-lessons" class="lesson-list hidden">
+          <h3>C Programlama Kursu İçeriği</h3>
+          
+          <div class="lesson-item">
+            <a href="#" class="toggle-code">C Temelleri</a>
+            <div class="lesson-desc">Değişkenler, operatörler ve kontrol yapıları</div>
+            <div class="code-example hidden">
+              <pre><code>#include <stdio.h>
+
+int main() {
+    // Değişkenler: Veriyi saklamak için kullanılan kutucuklar
+    int yas = 25;                  // Tam sayı değişkeni
+    float boy = 1.75;              // Ondalıklı sayı değişkeni
+    char cinsiyet = 'E';           // Tek karakter değişkeni
+    char isim[20] = "Emir";        // Karakter dizisi (string)
+
+    // Operatörler: Değişkenler üzerinde işlem yapmamızı sağlar
+    int a = 10, b = 3;
+    int toplam = a + b;            // Toplama
+    int fark = a - b;              // Çıkarma
+    int carpim = a * b;            // Çarpma
+    int bolum = a / b;             // Bölme (tam sayı bölümü)
+    int mod = a % b;               // Mod alma (kalan)
+
+    // Karşılaştırma operatörleri (sonuç 0 veya 1)
+    int esitMi = (a == b);         // Eşitlik kontrolü
+    int farkliMi = (a != b);       // Eşit olmama kontrolü
+
+    // Kontrol yapıları: Programın akışını kontrol eder
+
+    // If - else: Koşula göre işlem yapar
+    if (yas >= 18) {
+        printf("Reşitsiniz.\n");
+    } else {
+        printf("Reşit değilsiniz.\n");
+    }
+
+    // Switch-case: Çoklu durum kontrolü
+    char harf = 'B';
+    switch (harf) {
+        case 'A':
+            printf("Harf A\n");
+            break;
+        case 'B':
+            printf("Harf B\n");
+            break;
+        default:
+            printf("Diğer harf\n");
+    }
+
+    // Döngüler: Tekrar eden işlemler için
+
+    // For döngüsü: Belirli sayıda tekrar
+    for (int i = 0; i < 5; i++) {
+        printf("For döngüsü: i = %d\n", i);
+    }
+
+    // While döngüsü: Koşul sağlandığı sürece tekrar eder
+    int sayac = 0;
+    while (sayac < 3) {
+        printf("While döngüsü: sayac = %d\n", sayac);
+        sayac++;
+    }
+
+    // Do-while döngüsü: En az bir kez çalışır, sonra koşulu kontrol eder
+    int j = 0;
+    do {
+        printf("Do-while döngüsü: j = %d\n", j);
+        j++;
+    } while (j < 2);
+
+    // Sonuçları ekrana yazdırma
+    printf("Toplam: %d\n", toplam);
+    printf("Fark: %d\n", fark);
+    printf("Çarpım: %d\n", carpim);
+    printf("Bölüm: %d\n", bolum);
+    printf("Mod: %d\n", mod);
+    printf("Eşit mi? %d\n", esitMi);     // 0 = false, 1 = true
+    printf("Farklı mı? %d\n", farkliMi);
+
+    return 0;  // Program başarılı bitti
+}</code></pre>
+            </div>
+          </div>
+
+          <div class="lesson-item">
+            <a href="#" class="toggle-code">Pointer'lar ve Bellek Yönetimi</a>
+            <div class="lesson-desc">Pointer kavramı ve dinamik bellek yönetimi</div>
+            <div class="code-example hidden">
+              <pre><code>#include <stdio.h>
+#include <stdlib.h>  // malloc ve free için gerekli
+
+int main() {
+    // Pointer: Bellek adresini tutan değişken
+    int sayi = 42;               // Normal int değişken
+    int *ptr = &sayi;            // ptr, sayi'nin adresini tutar
+
+    printf("Sayi: %d\n", sayi);              // sayi'nın değeri
+    printf("ptr'nin gösterdiği değer: %d\n", *ptr); // ptr'nin işaret ettiği değeri alırız
+    printf("sayi'nin adresi: %p\n", &sayi);  // sayi'nin bellekteki adresi
+    printf("ptr'nin değeri (adres): %p\n", ptr);    // ptr'nin tuttuğu adres (sayi'nin adresi)
+
+    // Dinamik bellek yönetimi: runtime'da (program çalışırken) bellek ayırma
+
+    int *dizi;
+    int n;
+
+    printf("Kaç elemanlı dizi istiyorsun? ");
+    scanf("%d", &n);
+
+    // malloc ile bellekte n tane int için alan ayırıyoruz
+    dizi = (int*) malloc(n * sizeof(int));
+    if (dizi == NULL) {  // malloc başarısızsa NULL döner
+        printf("Bellek ayırma başarısız!\n");
+        return 1;
+    }
+
+    // Dizinin elemanlarını kullanıcıdan alalım
+    for (int i = 0; i < n; i++) {
+        printf("dizi[%d] = ", i);
+        scanf("%d", &dizi[i]);
+    }
+
+    // Diziyi ekrana yazdıralım
+    printf("Girdiğiniz dizi: ");
+    for (int i = 0; i < n; i++) {
+        printf("%d ", dizi[i]);
+    }
+    printf("\n");
+
+    // Bellek işimiz bittiğinde free ile ayırdığımız alanı geri veriyoruz
+    free(dizi);
+
+    return 0;
+}</code></pre>
+            </div>
+          </div>
+
+          <div class="lesson-item">
+            <a href="#" class="toggle-code">C'de Veri Yapıları</a>
+            <div class="lesson-desc">Yapılar, bağlı listeler ve ağaçlar</div>
+            <div class="code-example hidden">
+              <pre><code>#include <stdio.h>
+#include <stdlib.h>
+
+// ------ BAĞLI LİSTE ------
+struct Node {
+    int veri;
+    struct Node* sonraki;
+};
+
+// Yeni düğüm oluşturur
+struct Node* yeniDugum(int veri) {
+    struct Node* n = (struct Node*)malloc(sizeof(struct Node));
+    n->veri = veri;
+    n->sonraki = NULL;
+    return n;
+}
+
+// Listeyi yazdırır
+void listeYazdir(struct Node* bas) {
+    while (bas != NULL) {
+        printf("%d -> ", bas->veri);
+        bas = bas->sonraki;
+    }
+    printf("NULL\n");
+}
+
+// Bağlı listeye sona eleman ekler
+void sonaEkle(struct Node** bas, int veri) {
+    struct Node* yeni = yeniDugum(veri);
+    if (*bas == NULL) {
+        *bas = yeni;
+        return;
+    }
+    struct Node* temp = *bas;
+    while (temp->sonraki != NULL)
+        temp = temp->sonraki;
+    temp->sonraki = yeni;
+}
+
+// Bağlı listeden ilk elemanı çıkarır
+void bastanCikar(struct Node** bas) {
+    if (*bas == NULL) return;
+    struct Node* temp = *bas;
+    *bas = (*bas)->sonraki;
+    free(temp);
+}
+
+// Bağlı listeden son elemanı çıkarır
+void sondanCikar(struct Node** bas) {
+    if (*bas == NULL) return;
+    if ((*bas)->sonraki == NULL) {
+        free(*bas);
+        *bas = NULL;
+        return;
+    }
+    struct Node* temp = *bas;
+    while (temp->sonraki->sonraki != NULL)
+        temp = temp->sonraki;
+    free(temp->sonraki);
+    temp->sonraki = NULL;
+}
+
+// ------ YIĞIN (STACK) ------
+
+#define MAX 100
+int stack[MAX];
+int top = -1;
+
+// Push: yığına eleman ekler
+void push(int x) {
+    if (top == MAX - 1) {
+        printf("Yığın dolu!\n");
+        return;
+    }
+    stack[++top] = x;
+}
+
+// Pop: yığından eleman çıkarır
+int pop() {
+    if (top == -1) {
+        printf("Yığın boş!\n");
+        return -1;
+    }
+    return stack[top--];
+}
+
+// ------ KUYRUK (QUEUE) ------
+
+int queue[MAX];
+int front = 0, rear = -1, size = 0;
+
+// Kuyruğa eleman ekler (enqueue)
+void enqueue(int x) {
+    if (size == MAX) {
+        printf("Kuyruk dolu!\n");
+        return;
+    }
+    rear = (rear + 1) % MAX;
+    queue[rear] = x;
+    size++;
+}
+
+// Kuyruktan eleman çıkarır (dequeue)
+int dequeue() {
+    if (size == 0) {
+        printf("Kuyruk boş!\n");
+        return -1;
+    }
+    int val = queue[front];
+    front = (front + 1) % MAX;
+    size--;
+    return val;
+}
+
+// ------ ARAMA ALGORİTMALARI ------
+
+// Linear Search: doğrusal arama yapar
+int linearSearch(int arr[], int n, int x) {
+    for (int i = 0; i < n; i++)
+        if (arr[i] == x)
+            return i; // Bulunan indeks
+    return -1; // Bulunamadı
+}
+
+// Binary Search: sıralı dizide ikili arama yapar (recursive)
+int binarySearch(int arr[], int sol, int sag, int x) {
+    if (sag >= sol) {
+        int mid = sol + (sag - sol) / 2;
+        if (arr[mid] == x) return mid;
+        if (arr[mid] > x) return binarySearch(arr, sol, mid - 1, x);
+        return binarySearch(arr, mid + 1, sag, x);
+    }
+    return -1; // Bulunamadı
+}
+
+// ------ SIRALAMA ALGORİTMALARI ------
+
+// Bubble Sort: basit kabarcık sıralama
+void bubbleSort(int arr[], int n) {
+    for (int i = 0; i < n - 1; i++)
+        for (int j = 0; j < n - i - 1; j++)
+            if (arr[j] > arr[j + 1]) {
+                int tmp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = tmp;
+            }
+}
+
+// Selection Sort: seçmeli sıralama
+void selectionSort(int arr[], int n) {
+    int min_idx;
+    for (int i = 0; i < n - 1; i++) {
+        min_idx = i;
+        for (int j = i + 1; j < n; j++)
+            if (arr[j] < arr[min_idx])
+                min_idx = j;
+        int tmp = arr[min_idx];
+        arr[min_idx] = arr[i];
+        arr[i] = tmp;
+    }
+}
+
+// Insertion Sort: eklemeli sıralama
+void insertionSort(int arr[], int n) {
+    for (int i = 1; i < n; i++) {
+        int key = arr[i];
+        int j = i - 1;
+        while (j >= 0 && arr[j] > key) {
+            arr[j + 1] = arr[j];
+            j--;
+        }
+        arr[j + 1] = key;
+    }
+}
+
+// Dizi yazdırma fonksiyonu
+void diziYazdir(int arr[], int n) {
+    for (int i = 0; i < n; i++)
+        printf("%d ", arr[i]);
+    printf("\n");
+}
+
+int main() {
+    // Bağlı Liste Örnek
+    struct Node* bas = NULL;
+    sonaEkle(&bas, 10);
+    sonaEkle(&bas, 20);
+    sonaEkle(&bas, 30);
+    printf("Bağlı Liste: ");
+    listeYazdir(bas);
+
+    printf("Bağlı listeden baştan çıkarma...\n");
+    bastanCikar(&bas);
+    listeYazdir(bas);
+
+    printf("Bağlı listeden sondan çıkarma...\n");
+    sondanCikar(&bas);
+    listeYazdir(bas);
+
+    // Yığın Örnek
+    printf("\nYığın (Stack) işlemleri:\n");
+    push(100);
+    push(200);
+    push(300);
+    printf("Pop: %d\n", pop());
+    printf("Pop: %d\n", pop());
+
+    // Kuyruk Örnek
+    printf("\nKuyruk (Queue) işlemleri:\n");
+    enqueue(10);
+    enqueue(20);
+    enqueue(30);
+    printf("Dequeue: %d\n", dequeue());
+    printf("Dequeue: %d\n", dequeue());
+
+    // Arama Örnekleri
+    int arr[] = {3, 6, 8, 10, 15, 20};
+    int n = sizeof(arr) / sizeof(arr[0]);
+    int aranan = 10;
+
+    printf("\nLinear Search: Eleman %d dizide ", aranan);
+    int idx = linearSearch(arr, n, aranan);
+    if (idx != -1)
+        printf("bulundu, index: %d\n", idx);
+    else
+        printf("bulunamadı.\n");
+
+    printf("Binary Search: Eleman %d dizide ", aranan);
+    idx = binarySearch(arr, 0, n - 1, aranan);
+    if (idx != -1)
+        printf("bulundu, index: %d\n", idx);
+    else
+        printf("bulunamadı.\n");
+
+    // Sıralama Örnekleri
+    int dizi1[] = {64, 34, 25, 12, 22, 11, 90};
+    int dizi2[] = {64, 34, 25, 12, 22, 11, 90};
+    int dizi3[] = {64, 34, 25, 12, 22, 11, 90};
+    int size = sizeof(dizi1) / sizeof(dizi1[0]);
+
+    bubbleSort(dizi1, size);
+    printf("\nBubble Sort sonucu: ");
+    diziYazdir(dizi1, size);
+
+    selectionSort(dizi2, size);
+    printf("Selection Sort sonucu: ");
+    diziYazdir(dizi2, size);
+
+    insertionSort(dizi3, size);
+    printf("Insertion Sort sonucu: ");
+    diziYazdir(dizi3, size);
+
+    return 0;
+}</code></pre>
+            </div>
+          </div>
+        </div>
+
+        <!-- R Dersleri -->
+        <div id="r-lessons" class="lesson-list hidden">
+          <h3>R Programlama Kursu İçeriği</h3>
+          
+          <div class="lesson-item">
+            <a href="#" class="toggle-code">R Temelleri</a>
+            <div class="lesson-desc">Veri tipleri, vektörler ve fonksiyonlar</div>
+            <div class="code-example hidden">
+              <pre><code># Veri tipleri: numeric (a), integer (b), character (c), logical (d), factor (f)
+a <- 3.14  
+
+b <- 5L  
+
+c <- "Merhaba"  
+
+d <- TRUE  
+
+f <- factor(c("kırmızı", "mavi", "kırmızı"))  
+
+
+# Vektörler oluşturma: sayısal (num_vec), karakter (char_vec), mantıksal (log_vec)
+num_vec <- c(1, 2, 3, 4, 5)  
+
+char_vec <- c("elma", "armut", "muz")  
+
+log_vec <- c(TRUE, FALSE, TRUE)  
+
+
+# Vektör işlemleri: uzunluk, toplam, ortalama, elemanlara erişim
+length(num_vec)  # num_vec uzunluğu  
+
+sum(num_vec)     # num_vec elemanlarının toplamı  
+
+mean(num_vec)    # num_vec elemanlarının ortalaması  
+
+num_vec[1]       # num_vec'in ilk elemanı  
+
+num_vec[2:4]     # num_vec'in 2'den 4'e kadar elemanları  
+
+
+# Matris oluşturma ve işlemleri
+matris <- matrix(1:9, nrow=3, ncol=3)  # 3x3 sayı matrisi  
+
+matris[1, ]      # Birinci satır  
+
+matris[, 2]      # İkinci sütun  
+
+
+# Liste oluşturma
+liste <- list(ad="Emir", yas=22, notlar=c(90, 85, 78))  
+
+liste$ad          # Listenin "ad" elemanı  
+
+liste$notlar[2]   # Notlar vektörünün ikinci elemanı  
+
+
+# Veri çerçevesi (data frame) oluşturma ve erişim
+df <- data.frame(isim=c("Ali", "Ayşe"), yas=c(25, 30))  
+
+df$isim          # isim sütunu  
+
+df[1, ]          # Birinci satır  
+
+
+# Fonksiyon tanımı: toplama yapan basit fonksiyon (topla)
+topla <- function(x, y) {  
+
+  return(x + y)  
+
+}  
+
+topla(10, 5)     # Fonksiyon çağrısı  
+
+
+# Rekürsif fonksiyon: faktoriyel hesaplama (faktoriyel)
+faktoriyel <- function(n) {  
+
+  if (n == 0) return(1)  
+
+  else return(n * faktoriyel(n - 1))  
+
+}  
+
+faktoriyel(6)    # 6 faktöriyel  
+
+
+# Varsayılan argümanlı fonksiyon: selamla (isim verilmezse "Dost" yazar)
+selamla <- function(isim = "Dost") {  
+
+  print(paste("Merhaba,", isim))  
+
+}  
+
+selamla()        # Merhaba, Dost  
+
+selamla("Emir")  # Merhaba, Emir  
+
+
+# Birden fazla çıktı döndüren fonksiyon: ortalama ve standart sapma (istatistik)
+istatistik <- function(x) {  
+
+  list(ortalama = mean(x), std_sapma = sd(x))  
+
+}  
+
+sonuc <- istatistik(c(10, 20, 30, 40, 50))  
+
+sonuc$ortalama  
+
+sonuc$std_sapma  
+
+
+# Koşullu ifadeler ve döngüler
+x <- 7  
+
+if (x > 5) {  
+
+  print("x 5'ten büyük")  
+
+} else {  
+
+  print("x 5'ten küçük veya eşit")  
+
+}  
+
+
+for (i in 1:5) {  
+
+  print(paste("Sayı:", i))  
+
+}  
+
+
+# Uygulama: Bir vektördeki çift sayıları yazdıran fonksiyon
+ciftleri_yazdir <- function(vektor) {  
+
+  for (eleman in vektor) {  
+
+    if (eleman %% 2 == 0) {  
+
+      print(eleman)  
+
+    }  
+
+  }  
+
+}  
+
+ciftleri_yazdir(c(1, 2, 3, 4, 5, 6))</code></pre>
+            </div>
+          </div>
+
+          <div class="lesson-item">
+            <a href="#" class="toggle-code">Veri Manipülasyonu</a>
+            <div class="lesson-desc">Veri çerçeveleri ve dplyr kütüphanesi</div>
+            <div class="code-example hidden">
+              <pre><code># Paketleri yükle ve açıkla
+library(dplyr)       # Veri manipülasyonu ve filtreleme için
+library(ggplot2)     # Veri görselleştirme için
+library(tidyr)       # Veri temizleme ve genişletme için
+library(readr)       # CSV ve dosya okuma/yazma için
+library(stringr)     # Metin işleme için
+library(lubridate)   # Tarih ve zaman işlemleri için
+library(forcats)     # Faktör seviyeleri yönetimi için
+library(caret)       # Makine öğrenmesi modelleme için
+library(randomForest) # Random Forest modeli için
+library(e1071)       # SVM ve istatistik için
+
+# Örnek veri oluştur, öğrenciler ve sınav sonuçları
+veri <- data.frame(
+  isim = c("Ali", "Ayşe", "Mehmet", "Zeynep", "Can", "Elif"),
+  yas = c(20, 22, 19, 21, 23, 22),
+  cinsiyet = factor(c("E", "K", "E", "K", "E", "K")),
+  not1 = c(85, 90, 78, 92, 67, 88),
+  not2 = c(80, 87, 82, 95, 70, 85),
+  tarih = as.Date(c("2025-01-15", "2025-02-10", "2025-01-18", "2025-02-12", "2025-01-20", "2025-02-14"))
+)
+
+# dplyr ile yaşa göre filtreleme (yas > 20) yap, sadece isim ve not1 seç, ve not1'e göre azalan sırala
+sonuc <- veri %>%
+  filter(yas > 20) %>%                                 # Yaşı 20'den büyük olanları filtreler
+  select(isim, not1) %>%                               # Sadece isim ve not1 sütunlarını seçer
+  arrange(desc(not1))                                  # not1'e göre azalan sıralar
+
+print(sonuc)  # sonucu yazdır
+
+# tidyr ile veri şekillendirme: not1 ve not2'yi uzun formata getir
+veri_uzun <- veri %>%
+  pivot_longer(cols = starts_with("not"), names_to = "sinav", values_to = "puan")  # not1, not2 sütunlarını sinav ve puan olarak dönüştürür
+
+print(veri_uzun)
+
+# ggplot2 ile notların histogramını oluştur
+ggplot(veri_uzun, aes(x = puan, fill = sinav)) +
+  geom_histogram(binwidth = 5, alpha = 0.7, position = "identity") +  # Puanları 5'erlik aralıklara ayırır ve sinav türüne göre renklendirir
+  labs(title = "Sınav Puanlarının Dağılımı", x = "Puan", y = "Frekans") +
+  theme_minimal()
+
+# stringr ile isimlerdeki ilk harfi büyük yap
+veri <- veri %>%
+  mutate(isim = str_to_title(isim))  # isim sütunundaki isimlerin ilk harfi büyük olur
+
+# lubridate ile tarih sütunundan ay bilgisini çıkar
+veri <- veri %>%
+  mutate(ay = month(tarih, label = TRUE))  # tarih sütunundan ay bilgisini çıkarır ve etiket olarak ekler
+
+print(veri)
+
+# forcats ile cinsiyet faktör seviyelerini yeniden sırala
+veri$cinsiyet <- fct_relevel(veri$cinsiyet, "K", "E")  # cinsiyet faktörünü 'K' önce olacak şekilde sıralar
+
+# readr ile CSV dosyasına veri yaz
+write_csv(veri, "ogrenciler.csv")  # veri çerçevesini 'ogrenciler.csv' olarak kaydeder
+
+# caret ile basit sınıflandırma modeli için veri hazırlığı
+set.seed(123)
+train_idx <- createDataPartition(veri$cinsiyet, p = 0.7, list = FALSE)  # Veri %70 eğitim için böl
+
+train <- veri[train_idx, ]  # Eğitim seti
+test <- veri[-train_idx, ]  # Test seti
+
+# Random Forest modeli ile cinsiyet tahmini
+rf_model <- randomForest(cinsiyet ~ yas + not1 + not2, data = train, ntree = 100)  # Yas, not1, not2 ile cinsiyeti tahmin etmeye çalışır
+
+# Model tahmini
+pred <- predict(rf_model, test)
+
+# Başarı ölçütü
+confusion <- table(test$cinsiyet, pred)  # Gerçek ve tahmin edilen cinsiyet karşılaştırması
+print(confusion)
+
+# e1071 paketi ile SVM modeli kur
+svm_model <- e1071::svm(cinsiyet ~ yas + not1 + not2, data = train)
+
+svm_pred <- predict(svm_model, test)
+
+svm_conf <- table(test$cinsiyet, svm_pred)
+
+print(svm_conf)</code></pre>
+            </div>
+          </div>
+
+          <div class="lesson-item">
+            <a href="#" class="toggle-code">R'da Veri Görselleştirme</a>
+            <div class="lesson-desc">ggplot2 ile grafikler ve görselleştirmeler</div>
+            <div class="code-example hidden">
+              <pre><code># 1. ggplot2 - Veri görselleştirme, çok esnek grafikler yaparsın
+library(ggplot2)
+ggplot(mtcars, aes(x=wt, y=mpg)) + geom_point()  # Basit scatter plot
+
+# 2. dplyr - Veri manipülasyonu, filtreleme, sıralama, özetleme kolay
+library(dplyr)
+mtcars %>% filter(cyl == 6) %>% summarise(avg_mpg = mean(mpg))  # 6 silindirli arabaların ortalama mpg'si
+
+# 3. tidyr - Veri setlerini temizleme, geniş->uzun format dönüştürme
+library(tidyr)
+data <- data.frame(id = 1:2, A = c(3,5), B = c(4,6))
+pivot_longer(data, cols = c(A,B), names_to = "variable", values_to = "value")
+
+# 4. data.table - Büyük veri işlemede süper hızlı veri çerçevesi
+library(data.table)
+dt <- data.table(mtcars)
+dt[cyl == 4, mean(mpg)]  # 4 silindirli araçların ortalaması
+
+# 5. lubridate - Tarih ve zaman işlemleri, tarihleri kolayca çözümle
+library(lubridate)
+today <- today()
+ymd("2023-07-01") + days(10)  # Tarih toplama örneği
+
+# 6. stringr - Karakter ve metin manipülasyonunda kolay fonksiyonlar
+library(stringr)
+str_detect("merhaba dünya", "dünya")  # TRUE döner
+
+# 7. readr - Hızlı ve kolay CSV ve metin dosyası okuma
+library(readr)
+df <- read_csv("data.csv")
+
+# 8. purrr - Fonksiyonel programlama, liste/map işlemleri için
+library(purrr)
+list(1,2,3) %>% map(~ .x^2)  # Her elemanın karesini hesaplar
+
+# 9. shiny - Web tabanlı interaktif uygulama geliştirme
+library(shiny)
+# Basit shiny uygulaması burada yazılmaz ama UI-server yapısı var
+
+# 10. caret - Makine öğrenmesi, model oluşturma ve değerlendirme
+library(caret)
+model <- train(Species~., data=iris, method="rpart")  # Karar ağacı modeli
+
+# 11. plotly - İnteraktif grafikler, ggplot2 ile birlikte kullanabilirsin
+library(plotly)
+p <- ggplot(mtcars, aes(wt, mpg)) + geom_point()
+ggplotly(p)  # İnteraktif grafik
+
+# 12. sf - Coğrafi veri (spatial) işlemleri ve haritalama
+library(sf)
+# Spatial veri okuma, yazma ve analiz için
+
+# 13. httr - API ve web istekleri yapmak için HTTP kütüphanesi
+library(httr)
+response <- GET("https://api.github.com")  # GitHub API isteği
+
+# 14. jsonlite - JSON verilerini R'ye ve R'den JSON'a dönüştürmek için
+library(jsonlite)
+fromJSON('{"name":"Emir","age":24}')
+
+# 15. janitor - Veri temizliği, kolon isimlerini kolay temizleme ve tablo özetleri
+library(janitor)
+clean_names(mtcars)  # Kolon isimlerini temizler
+
+# 16. glue - Metin birleştirme ve dinamik string oluşturma için
+library(glue)
+name <- "Emir"
+glue("Merhaba {name}, nasılsın?")  # "Merhaba Emir, nasılsın?"
+
+# 17. RColorBrewer - Güzel renk paletleri görselleştirme için
+library(RColorBrewer)
+display.brewer.all()  # Renk paletlerini gösterir
+
+# 18. ggrepel - Grafiklerdeki etiketlerin üst üste binmesini önler
+library(ggrepel)
+ggplot(mtcars, aes(wt, mpg, label=rownames(mtcars))) +
+  geom_point() + geom_text_repel()
+
+# 19. broom - Modellerden temiz, derlenmiş özet tablolar oluşturur
+library(broom)
+lm_model <- lm(mpg ~ wt, data=mtcars)
+tidy(lm_model)  # Model özetini tablo olarak verir
+
+# 20. furrr - purrr ve future paketlerinin birleşimi ile paralel işlemler
+library(furrr)
+plan(multisession)
+future_map(1:5, ~Sys.sleep(1); .x^2)  # Paralel map fonksiyonu
+
+# 21. RSQLite - SQLite veritabanı bağlantısı ve sorgulama için
+library(RSQLite)
+con <- dbConnect(SQLite(), ":memory:")
+dbWriteTable(con, "mtcars", mtcars)
+dbGetQuery(con, "SELECT * FROM mtcars LIMIT 5")
+
+# 22. leaflet - İnteraktif haritalar için
+library(leaflet)
+leaflet() %>% addTiles() %>% addMarkers(lng=28.97, lat=41.01, popup="İstanbul")
+
+# 23. packrat - Proje bağımlılıklarını yönetmek için paket
+# Paket sürümlerini sabitler ve projenin taşınabilir olmasını sağlar
+
+# 24. memoise - Fonksiyonların sonuçlarını cache'ler, hızlı tekrar için
+library(memoise)
+slow_func <- function(x) {Sys.sleep(3); x^2}
+fast_func <- memoise(slow_func)
+fast_func(2)  # İlk çağrıda yavaş, sonra hızlı
+
+# 25. openxlsx - Excel dosyaları okuma/yazma için kolay paket
+library(openxlsx)
+write.xlsx(mtcars, "mtcars.xlsx")
+
+# 26. rvest - Web scraping, HTML parse etmek için
+library(rvest)
+webpage <- read_html("https://www.r-project.org")
+webpage %>% html_nodes("title") %>% html_text()
+
+# 27. datawizard - Veri ön işleme ve dönüşüm için kapsamlı araçlar
+library(datawizard)
+normalize(mtcars$mpg)  # Değerleri 0-1 aralığına getirir
+
+# 28. forcats - Faktörler (kategori değişkenler) ile çalışmak için
+library(forcats)
+fct_infreq(factor(c("A","B","A","C")))  # En sık kullanılan sıralar
+
+# 29. Rcpp - C++ kodunu R içine gömmek ve hızlandırmak için
+library(Rcpp)
+cppFunction('int add(int x, int y) { return x + y; }')
+add(3,4)  # 7 döner
+
+# 30. profvis - Kod performans analizi ve profilleme aracı
+library(profvis)
+profvis({
+  for(i in 1:1000) {
+    sqrt(i)
+  }
+})</code></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- İngilizce Versiyon -->
+      <div class="en-text hidden">
+        <!-- Python Dersleri (EN) -->
+        <div id="python-lessons-en" class="lesson-list">
+          <h3>Python Course Content</h3>
+          
+          <div class="lesson-item">
+            <a href="#" class="toggle-code">Basic Python</a>
+            <div class="lesson-desc">Variables, loops, functions and basic data structures</div>
+            <div class="code-example hidden">
+              <pre><code># 1. Variables
+name = "Emir"
+age = 21
+pi = 3.14
+is_true = True
+
+print(f"Name: {name}, Age: {age}, Pi: {pi}, Is True?: {is_true}")
+
+# 2. Loops
+print("\nNumbers with for loop:")
+for i in range(1, 6):
+    print(i, end=" ")
+print()
+
+print("\nNumbers with while loop:")
+counter = 1
+while counter <= 5:
+    print(counter, end=" ")
+    counter += 1
+print()
+
+# 3. Functions
+def greet(name):
+    print(f"Hello, {name}!")
+
+greet(name)
+
+def add(a, b):
+    return a + b
+
+result = add(10, 5)
+print(f"Addition result: {result}")
+
+# 4. Basic Data Structures
+
+# List
+fruits = ["apple", "pear", "banana"]
+print(f"Fruits list: {fruits}")
+fruits.append("cherry")
+print(f"Updated fruits list: {fruits}")
+
+# Tuple (immutable)
+colors = ("red", "blue", "green")
+print(f"Colors tuple: {colors}")
+
+# Dictionary
+person = {
+    "name": "Emir",
+    "age": 21,
+    "profession": "Student"
+}
+print(f"Person info: {person}")
+print(f"Name: {person['name']}, Profession: {person['profession']}")
+
+# Print list elements with loop
+print("\nFruits list elements:")
+for fruit in fruits:
+    print("-", fruit)</code></pre>
+            </div>
+          </div>
+
+          <div class="lesson-item"><a href="#">Object-Oriented Programming</a></div>
+          <div class="lesson-desc">Classes, objects, inheritance and polymorphism</div>
+
+          <div class="lesson-item"><a href="#">Python for Data Science</a></div>
+          <div class="lesson-desc">NumPy, Pandas and Matplotlib libraries</div>
+        </div>
+
+        <!-- Java Dersleri (EN) -->
+        <div id="java-lessons-en" class="lesson-list hidden">
+          <h3>Java Course Content</h3>
+          
+          <div class="lesson-item"><a href="#">Java Basics</a></div>
+          <div class="lesson-desc">Syntax, data types and control structures</div>
+
+          <div class="lesson-item"><a href="#">Object-Oriented Java</a></div>
+          <div class="lesson-desc">Classes, interfaces and packages</div>
+
+          <div class="lesson-item"><a href="#">Java Collections</a></div>
+          <div class="lesson-desc">Lists, sets, maps and stream API</div>
+        </div>
+
+        <!-- C Dersleri (EN) -->
+        <div id="c-lessons-en" class="lesson-list hidden">
+          <h3>C Programming Course Content</h3>
+          
+          <div class="lesson-item"><a href="#">C Basics</a></div>
+          <div class="lesson-desc">Variables, operators and control structures</div>
+
+          <div class="lesson-item"><a href="#">Pointers and Memory Management</a></div>
+          <div class="lesson-desc">Pointer concept and dynamic memory management</div>
+
+          <div class="lesson-item"><a href="#">Data Structures in C</a></div>
+          <div class="lesson-desc">Structures, linked lists and trees</div>
+        </div>
+
+        <!-- R Dersleri (EN) -->
+        <div id="r-lessons-en" class="lesson-list hidden">
+          <h3>R Programming Course Content</h3>
+          
+          <div class="lesson-item"><a href="#">R Basics</a></div>
+          <div class="lesson-desc">Data types, vectors and functions</div>
+
+          <div class="lesson-item"><a href="#">Data Manipulation</a></div>
+          <div class="lesson-desc">Data frames and dplyr library</div>
+
+          <div class="lesson-item"><a href="#">Data Visualization in R</a></div>
+          <div class="lesson-desc">Graphs and visualizations with ggplot2</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projeler Bölümü -->
+    <section id="projects" class="section">
+      <h2 class="tr-text">Projelerim</h2>
+      <h2 class="en-text hidden">My Projects</h2>
+
+      <div class="tr-text">
+        <p>Çeşitli programlama dillerinde geliştirdiğim projelerimi GitHub üzerinden inceleyebilirsiniz:</p>
+        <a href="https://github.com/emir-canswe" target="_blank">GitHub Profilim</a>
+      </div>
+
+      <div class="en-text hidden">
+        <p>You can review my projects developed in various programming languages on GitHub:</p>
+        <a href="https://github.com/emir-canswe" target="_blank">My GitHub Profile</a>
+      </div>
+    </section>
+
+    <!-- İletişim Bölümü -->
+    <section id="contact" class="section">
+      <h2 class="tr-text">İletişim</h2>
+      <h2 class="en-text hidden">Contact</h2>
+
+      <div class="tr-text">
+        <p>Eğitimler hakkında bilgi almak veya işbirliği yapmak için bana ulaşabilirsiniz:</p>
+        <p>Email: <a href="mailto:canemircan38@gmail.com">canemircan38@gmail.com</a></p>
+        <p>LinkedIn: <a href="https://www.linkedin.com/in/emircan-can-4034662a1/"
+            target="_blank">linkedin.com/in/emircan-can</a></p>
+
+        <form id="contact-form-tr">
+          <label for="name">Adınız</label>
+          <input type="text" id="name" name="name" required>
+
+          <label for="email">Email Adresiniz</label>
+          <input type="email" id="email" name="email" required>
+
+          <label for="message">Mesajınız</label>
+          <textarea id="message" name="message" rows="5" required></textarea>
+
+          <button type="submit">Gönder</button>
+        </form>
+      </div>
+
+      <div class="en-text hidden">
+        <p>You can contact me for information about courses or collaboration:</p>
+        <p>Email: <a href="mailto:canemircan38@gmail.com">canemircan38@gmail.com</a></p>
+        <p>LinkedIn: <a href="https://www.linkedin.com/in/emircan-can-4034662a1/"
+            target="_blank">linkedin.com/in/emircan-can</a></p>
+
+        <form id="contact-form-en">
+          <label for="name-en">Your Name</label>
+          <input type="text" id="name-en" name="name" required>
+
+          <label for="email-en">Your Email</label>
+          <input type="email" id="email-en" name="email" required>
+
+          <label for="message-en">Your Message</label>
+          <textarea id="message-en" name="message" rows="5" required></textarea>
+
+          <button type="submit">Send</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p class="tr-text">© 2025 Emir Can - Tüm Hakları Saklıdır</p>
+    <p class="en-text hidden">© 2025 Emir Can - All Rights Reserved</p>
+  </footer>
+
+  <script>
+    // Dil değiştirme fonksiyonu
+    function changeLanguage(lang) {
+      // TR/EN butonlarını güncelle
+      document.querySelectorAll('.language-switcher span').forEach(span => {
+        if (span.dataset.lang === lang) {
+          span.classList.add('active');
+        } else {
+          span.classList.remove('active');
+        }
+      });
+
+      // Logo metnini çevir
+      document.querySelectorAll('.logo').forEach(logo => {
+        if (logo.classList.contains(`${lang}-text`)) {
+          logo.classList.remove('hidden');
+        } else {
+          logo.classList.add('hidden');
+        }
+      });
+
+      // Navbar öğelerini çevir
+      document.querySelectorAll('nav ul li').forEach(item => {
+        item.textContent = item.getAttribute(`data-${lang}`);
+      });
+
+      // Tüm metinleri güncelle
+      document.querySelectorAll(`.${lang}-text`).forEach(el => {
+        el.classList.remove('hidden');
+      });
+
+      const otherLang = lang === 'tr' ? 'en' : 'tr';
+      document.querySelectorAll(`.${otherLang}-text`).forEach(el => {
+        el.classList.add('hidden');
+      });
+    }
+
+    // Dil değiştirme butonlarına event listener ekle
+    document.querySelectorAll('.language-switcher span').forEach(span => {
+      span.addEventListener('click', () => {
+        changeLanguage(span.dataset.lang);
+      });
+    });
+
+    // Menü navigasyonu
+    document.querySelectorAll('nav ul li').forEach(item => {
+      item.addEventListener('click', function () {
+        // Aktif menü öğesini güncelle
+        document.querySelectorAll('nav ul li').forEach(li => {
+          li.classList.remove('active');
+        });
+        this.classList.add('active');
+
+        // İlgili bölüme kaydır
+        const targetId = this.dataset.target;
+        document.getElementById(targetId).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+
+    // Kurs butonlarına tıklama
+    document.querySelectorAll('.course-btn').forEach(btn => {
+      btn.addEventListener('click', function () {
+        const course = this.dataset.course;
+        const currentLang = document.querySelector('.language-switcher span.active').dataset.lang;
+
+        // Tüm ders listelerini gizle
+        document.querySelectorAll(`.${currentLang}-text .lesson-list`).forEach(list => {
+          list.classList.add('hidden');
+        });
+
+        // İlgili ders listesini göster
+        document.getElementById(`${course}-lessons${currentLang === 'en' ? '-en' : ''}`).classList.remove('hidden');
+      });
+    });
+
+    // Kod örneklerini göster/gizle
+    document.querySelectorAll('.toggle-code').forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        this.classList.toggle('active');
+        const codeExample = this.nextElementSibling.nextElementSibling;
+        codeExample.classList.toggle('hidden');
+      });
+    });
+
+    // Form gönderimi
+    document.getElementById('contact-form-tr')?.addEventListener('submit', function (e) {
+      e.preventDefault();
+      alert('Mesajınız alındı, teşekkürler!');
+      this.reset();
+    });
+
+    document.getElementById('contact-form-en')?.addEventListener('submit', function (e) {
+      e.preventDefault();
+      alert('Your message has been received, thank you!');
+      this.reset();
+    });
+
+    // Sayfa yüklendiğinde Python kursunu göster
+    document.addEventListener('DOMContentLoaded', function () {
+      document.getElementById('python-lessons').classList.remove('hidden');
+      document.getElementById('python-lessons-en').classList.remove('hidden');
+    });
+
+    // Sayfa yüklendiğinde URL'de hash varsa ilgili bölüme kaydır
+    window.addEventListener('load', function() {
+      if (window.location.hash) {
+        const targetId = window.location.hash.substring(1);
+        const targetElement = document.getElementById(targetId);
+        if (targetElement) {
+          setTimeout(() => {
+            targetElement.scrollIntoView({ behavior: 'smooth' });
+          }, 100);
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>
